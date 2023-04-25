@@ -1,17 +1,17 @@
 import {MiddlewareConsumer, Module, NestModule} from '@nestjs/common';
 import {ClientModule} from './api/client/client.module';
 import {LoggerMiddleware} from "./middleware/logger.middleware";
-import { StreamController } from './stream/stream.controller';
-import { StreamService } from './stream/stream.service';
-import { StreamModule } from './stream/stream.module';
+import {StreamModule} from './stream/stream.module';
+import { AccountModule } from './api/account/account.module';
+import { DepositModule } from './api/deposit/deposit.module';
 
 @Module({
   imports: [
     ClientModule,
-    StreamModule
+    StreamModule,
+    AccountModule,
+    DepositModule
   ],
-  controllers: [StreamController],
-  providers: [StreamService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
